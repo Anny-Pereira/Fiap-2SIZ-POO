@@ -1,0 +1,18 @@
+package jdbc;
+
+import java.sql.DriverManager;
+
+public class ConnectionDB {
+	
+	public static ConnectionDB obterConexao() {
+		ConnectionDB conexao = null;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conexao= DriverManager
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+}

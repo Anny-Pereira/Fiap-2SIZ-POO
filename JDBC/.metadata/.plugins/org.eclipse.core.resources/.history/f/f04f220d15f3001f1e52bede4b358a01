@@ -1,0 +1,18 @@
+package jdbc;
+
+public class Teste {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		Cliente c1 = new Cliente();
+		c1.setIdCliente(2);
+		c1.setNome("Fulano de Tal");
+		c1.setEmail("fulano2fiap.com");
+		c1.setCpf("888.777.666-00");
+		c1.setTelefone("(11)75878-9999");
+		c1.insereCliente();
+	}
+
+}

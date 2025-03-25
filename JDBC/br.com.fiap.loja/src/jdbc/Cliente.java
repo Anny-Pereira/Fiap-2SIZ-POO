@@ -2,6 +2,7 @@ package jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Cliente {
@@ -103,6 +104,28 @@ public class Cliente {
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	public void pesquisarClientes() {
+		Connection cnx = ConnectionDB.obterConexao();
+		PreparedStatement stmt;
+		
+		String sql = "SELECT * FROM CLIENTE";
+		
+		try {
+			stmt = cnx.prepareStatement(sql);			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				System.out.println(rs.getString("NOME") + "				 " + rs.getString("CPF"));
+			}
+			
+		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}

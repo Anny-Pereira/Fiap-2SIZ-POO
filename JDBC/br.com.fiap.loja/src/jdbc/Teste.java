@@ -29,16 +29,21 @@ public class Teste {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Escolha qual é a função desejada: ");
-		System.out.println("I - Incluir novo cliente");
-		System.out.println("A - Alterar um cliente");
-		System.out.println("E - Excluir um cliente");
+		System.out.println("1 - Incluir novo cliente");
+		System.out.println("2 - Alterar um cliente");
+		System.out.println("3 - Excluir um cliente");
+		System.out.println("4 - Pesquisar clientes");
+		System.out.println("5 - Criar nova categoria");
+		System.out.println("6 - Alterar uma categoria");
+		System.out.println("7 - Excluir uma categoria");
+		System.out.println("8 - Pesquisar categorias");
+		System.out.println("9 - Cancelar");
 		
+		int resposta = sc.nextInt();
 		Cliente c3 = new Cliente();
 		
-		String resposta = sc.next();
-		
-		if(resposta.equalsIgnoreCase("I")) {
-			
+		switch (resposta) {
+		case 1: {
 			
 			System.out.println("Digite o código do cliente:");
 			c3.setIdCliente(sc.nextInt());
@@ -51,9 +56,10 @@ public class Teste {
 			System.out.println("Informe o telefone:");
 			c3.setTelefone(sc.next());
 			c3.insereCliente();
-			
-		} else if(resposta.equalsIgnoreCase("A")) {
-			
+			}
+			break;
+		
+		case 2:
 			System.out.println("Deseja alterar um cadastro? S ou N");
 			if(sc.next().equalsIgnoreCase("S")) {
 				System.out.println("Informe o Id do cliente que deseja alterar :");
@@ -67,19 +73,76 @@ public class Teste {
 			} else {
 				System.out.println("Encerrando...");
 			}
-		} else if(resposta.equalsIgnoreCase("E")) {
+			break;
 			
-			
+		case 3:
 			System.out.println("Deseja excluir um cadastro? S ou N");
 			if(sc.next().equalsIgnoreCase("S")) {
 				System.out.println("Digite o id do cliente que deseja excluir:");
 				c3.setIdCliente(sc.nextInt());
 				c3.excluiCliente();
 				System.out.println("Cliente excluído com sucesso!");
+			} else {
+				System.out.println("Encerrando...");
 			}
-		} else {
+			break;
+		
+		case 4:{
+			System.out.println("\nPesquisar um cliente");
+			System.out.println("----CLIENTES");
+			c3.pesquisarClientes();
+			break;
+			}
+			
+		case 5:{
+			Categoria cat1 = new Categoria();
+			System.out.println("Digite o código da categria:");
+			cat1.setIdCategoria(sc.nextInt());
+			sc.nextLine();
+			System.out.println("Digite a descricao da categoria:");
+			cat1.setDescricao(sc.nextLine());
+			cat1.inserirCategoria();
+			break;
+		}
+			
+		case 6:{
+			Categoria cat1 = new Categoria();
+			System.out.println("Digite o codigo da categoria: ");
+			cat1.setIdCategoria(sc.nextInt());
+			sc.nextLine();
+			System.out.println("Digite a descricao da categoria: ");
+			cat1.setDescricao(sc.nextLine());
+			cat1.alterarCategoria();
+			break;
+		}
+		case 7:
+		{
+			Categoria cat1 = new Categoria();
+			System.out.println("Digite o código da categoria: ");
+			cat1.setIdCategoria(sc.nextInt());
+			cat1.excluirCategoria();
+			break;
+		}
+		case 8: 
+		{
+			Categoria cat1 = new Categoria();
+			System.out.println("----Categorias");
+			for(Categoria c : cat1.pesquisarCategorias()) {
+				System.out.println(c);
+			}
+			break;
+		}
+		case 9:
+		{
+			System.out.println("Encerrando...");
+			break;
+		}
+			
+		default:
 			System.out.println("Insira uma opção válida!");
 		}
+		
+	
 		
 		
 		

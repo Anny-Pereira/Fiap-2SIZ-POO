@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente {
 	
@@ -111,7 +113,9 @@ public class Cliente {
 	}
 	
 	
-	public void pesquisarClientes() {
+	public List<Cliente> pesquisarClientes() {
+		
+		List<Cliente> lstClientes = new ArrayList();
 		Connection cnx = ConnectionDB.obterConexao();
 		PreparedStatement stmt;
 		
@@ -121,7 +125,19 @@ public class Cliente {
 			stmt = cnx.prepareStatement(sql);			
 			ResultSet rs = stmt.executeQuery(sql);
 			
+			if(!rs.next()) {
+				System.out.println("Não há linhas para exibir!");
+			}
+			
 			while(rs.next()) {
+				//Enquanto tiver linhas a serem exibidas
+				Cliente c = new Cliente();
+				c.idCliente= rs.getInt("IDCLIENTE");
+				c.nome = rs.getString("NOME");
+				c.email = rs.getString("EMAIL");
+				c.telefone = rs.getString("TELEFONE");
+				c.cpf = rs.getString("CPF");
+				lstClientes.add(c);
 				System.out.println(rs.getString("NOME") + "				 " + rs.getString("CPF"));
 			}
 			
@@ -129,6 +145,76 @@ public class Cliente {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		 return lstClientes;
+
+		
+	}
+	
+	
+	public void buscaCliente(int idCliente) {
+		
+		Connection cnx = ConnectionDB.obterConexao();
+		PreparedStatement stmt;
+		
+		String sql = "SELECT * FROM CLIENTE WHERE IDCLIENTE=? ";
+		
+		try {
+			stmt = cnx.prepareStatement(sql);			
+			stmt.setInt(1, idCliente);
+			ResultSet rs = stmt.executeQuery();
+					
+			if(!rs.next()) {
+				System.out.println("Não há nada ");
+				
+			}
+			
+			Cliente c = new Cliente();
+			c.idCliente = rs.getInt("IDCLIENTE");
+			c.nome = rs.getString("NOME");
+			c.email = rs.getString("EMAIL");
+			c.telefone = rs.getString("TELEFONE");
+			c.cpf = rs.getString("CPF");
+			System.out.println(c);
+			
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		
+	}
+	
+	public void buscaClienteNome(String nomeCliente) {
+		
+		Connection cnx = ConnectionDB.obterConexao();
+		PreparedStatement stmt;
+		
+		String sql = "SELECT * FROM CLIENTE WHERE NOME=? ";
+		
+		try {
+			stmt = cnx.prepareStatement(sql);			
+			stmt.setString(1, nomeCliente);
+			ResultSet rs = stmt.executeQuery();
+					
+			
+			
+			while(rs.next()) {
+			Cliente c = new Cliente();
+			c.idCliente = rs.getInt("IDCLIENTE");
+			c.nome = rs.getString("NOME");
+			c.email = rs.getString("EMAIL");
+			c.telefone = rs.getString("TELEFONE");
+			c.cpf = rs.getString("CPF");
+			System.out.println(c);
+			}
+			
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
 		
 	}
 

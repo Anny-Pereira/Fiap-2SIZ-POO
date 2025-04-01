@@ -130,5 +130,37 @@ public class Categoria {
 		return lstCategorias;
 	}
 	
+	public void buscaCategoria(int idCategoria) {
+		
+		Connection cnx = ConnectionDB.obterConexao();
+		PreparedStatement stmt;
+		
+		String sql = "SELECT * FROM CATEGORIA WHERE IDCATEGORIA=? ";
+		
+		try {
+			stmt = cnx.prepareStatement(sql);			
+			stmt.setInt(1, idCategoria);
+			ResultSet rs = stmt.executeQuery();
+					
+			if(!rs.next()) {
+				System.out.println("Não há nada ");
+				
+			}
+			
+		
+			Categoria c = new Categoria();
+			c.idCategoria = rs.getInt("IDCATEGORIA");
+			c.descricao = rs.getString("DESCRICAO");
+			System.out.println(c);
+			
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		
+	}
+	
 
 }

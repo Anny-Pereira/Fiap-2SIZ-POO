@@ -2,11 +2,12 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.awt.print.PrinterException"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
-    <fullyQualifiedTypeName name="jdbc.ConnectionDB"/>
-    <fullyQualifiedTypeName name="jdbc.Categoria"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="jdbc.Cliente"/>
+    <fullyQualifiedTypeName name="jdbc.ConnectionDB"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="jdbc.Produto"/>
+    <fullyQualifiedTypeName name="jdbc.Categoria"/>
 </qualifiedTypeNameHistroy>

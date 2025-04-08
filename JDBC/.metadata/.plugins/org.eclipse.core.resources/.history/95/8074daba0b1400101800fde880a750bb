@@ -147,6 +147,7 @@ public class Categoria {
 				System.out.println("Não há nada ");
 				
 			}
+			
 		
 		
 			c.idCategoria = rs.getInt("IDCATEGORIA");

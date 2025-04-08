@@ -130,11 +130,10 @@ public class Categoria {
 		return lstCategorias;
 	}
 	
-	public Categoria buscaCategoria(int idCategoria) {
+	public void buscaCategoria(int idCategoria) {
 		
 		Connection cnx = ConnectionDB.obterConexao();
 		PreparedStatement stmt;
-		Categoria c = new Categoria();
 		
 		String sql = "SELECT * FROM CATEGORIA WHERE IDCATEGORIA=? ";
 		
@@ -147,8 +146,9 @@ public class Categoria {
 				System.out.println("Não há nada ");
 				
 			}
+			
 		
-		
+			Categoria c = new Categoria();
 			c.idCategoria = rs.getInt("IDCATEGORIA");
 			c.descricao = rs.getString("DESCRICAO");
 			System.out.println(c);
@@ -159,7 +159,7 @@ public class Categoria {
 			e.printStackTrace();
 		}
 
-		 return c;
+		
 	}
 	
 

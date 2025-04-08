@@ -40,13 +40,11 @@ public class Teste {
 		System.out.println("9 - Buscar Cliente pelo Id");
 		System.out.println("10 - Buscar Cliente pelo nome");
 		System.out.println("11 - Buscar Categoria pelo Id");
-		System.out.println("12 - Incluir novo produto");
-		System.out.println("13 - Cancelar");
+		System.out.println("12 - Cancelar");
 		
 		int resposta = sc.nextInt();
 		Cliente c3 = new Cliente();
 		Categoria cat1 = new Categoria();
-		Produto p1 = new Produto();
 		
 		switch (resposta) {
 		case 1: {
@@ -153,23 +151,7 @@ public class Teste {
 			cat1.buscaCategoria(respIdCat);
 			
 			break;
-		case 12:
-			System.out.println("Digite o codigo do produto:");
-			p1.setIdProduto(sc.nextInt());
-			System.out.println("Informe a descricao do produto:");
-			p1.setDescricao(sc.next());
-			System.out.println("Informe o preco do produto:");
-			p1.setPreco(sc.nextDouble());
-			System.out.println("Informe a categoria do produto:");
-			for(Categoria c : cat1.pesquisarCategorias()) {
-				System.out.println(c);
-			}
-			int idCategoria = sc.nextInt(); //usuario digita o ida da categoria
-			p1.setCategoria(cat1.buscaCategoria(idCategoria));
-			p1.inserirProduto();
-			break;
-			
-		case 13:		{
+		case 12:		{
 			System.out.println("Encerrando...");
 			break;
 		}

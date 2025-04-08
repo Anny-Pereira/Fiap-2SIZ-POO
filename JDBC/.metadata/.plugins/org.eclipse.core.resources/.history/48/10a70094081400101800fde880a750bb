@@ -161,12 +161,10 @@ public class Teste {
 			System.out.println("Informe o preco do produto:");
 			p1.setPreco(sc.nextDouble());
 			System.out.println("Informe a categoria do produto:");
-			for(Categoria c : cat1.pesquisarCategorias()) {
-				System.out.println(c);
-			}
-			int idCategoria = sc.nextInt(); //usuario digita o ida da categoria
-			p1.setCategoria(cat1.buscaCategoria(idCategoria));
+			System.out.println(cat1.pesquisarCategorias());
+			p1.setCategoria(cat1.buscaCategoria(sc.nextInt()));
 			p1.inserirProduto();
+			System.out.println("\tProduto criado!");
 			break;
 			
 		case 13:		{

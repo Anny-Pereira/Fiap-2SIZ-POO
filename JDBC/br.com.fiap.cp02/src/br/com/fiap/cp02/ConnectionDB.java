@@ -1,0 +1,26 @@
+package br.com.fiap.cp02;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConnectionDB {
+	
+	public static Connection obterConexao() {
+		Connection conexao = null;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conexao= DriverManager.getConnection("jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL",
+					"RM553793",
+					"310804");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return conexao;
+	}
+
+}

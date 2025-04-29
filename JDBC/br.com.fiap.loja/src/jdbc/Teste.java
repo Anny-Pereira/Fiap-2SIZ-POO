@@ -41,7 +41,9 @@ public class Teste {
 		System.out.println("10 - Buscar Cliente pelo nome");
 		System.out.println("11 - Buscar Categoria pelo Id");
 		System.out.println("12 - Incluir novo produto");
-		System.out.println("13 - Cancelar");
+		System.out.println("13 - Pesquisar produto");
+		System.out.println("14 - Pesquisar produto pela descricao");
+		System.out.println("15 - Cancelar");
 		
 		int resposta = sc.nextInt();
 		Cliente c3 = new Cliente();
@@ -169,7 +171,22 @@ public class Teste {
 			p1.inserirProduto();
 			break;
 			
-		case 13:		{
+		case 13:
+			for(Produto p : p1.pesquisarProduto()) {
+				System.out.println(p);
+			}
+			break;
+			
+		case 14:		{
+			System.out.println("Informe o nome ou parte do nome do produto");
+			String desc = sc.next();
+			for(Produto p : p1.pesquisarProduto(desc)) {
+				System.out.println(p);
+			}
+			break;
+		}
+			
+		case 15:		{
 			System.out.println("Encerrando...");
 			break;
 		}
